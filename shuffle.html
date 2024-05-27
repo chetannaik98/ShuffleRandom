@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<style>
+
+.card{
+width:32%;
+height:100px;
+background-color:blue;
+border:1px solid white;
+color:white;
+font-size:24px;
+font-weigth:bold;
+display:inline-flex;
+justify-content:center;
+align-items:center;
+}
+
+#main{
+width:330px;
+}
+
+.btn{
+background-color:green;
+color:white;
+padding:16px 32px;
+text-align:center;
+disply:inline-block;
+font-size:16px;
+margin:4px 2px;
+cursor:pointer;
+}
+
+</style>
+
+<div id="main">
+</div>
+<button onclick="shuffle()" class="btn"> Shuffle </button>
+<button onclick="sort()" class="btn"> Sort </button>
+
+<script>
+document.getElementById("main").innerHTML = getCard();
+
+function getCard(){
+let html = ``;
+for(let i=1;i<10;i++){
+html += `<div class="card"> ${i}</div>`;
+}
+return html
+}
+
+function shuffle(){
+let html = ``;
+let num =10;
+let randomArray=[];
+while (num>1){
+let random = Math.floor((Math.random() * 10));
+if(!randomArray.includes(random) && random !== 0){
+randomArray.push(random);
+html += `<div class="card"> ${random}</div>`;
+num --
+}
+document.getElementById("main").innerHTML = html;
+}
+return html
+}
+
+function sort(){
+document.getElementById("main").innerHTML = getCard();
+}
+
+</script>
+</body>
+</html>
